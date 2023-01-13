@@ -11,3 +11,7 @@ a {
 .nav{
     background-color: antiquewhite;
 }
+
+body{
+    background-image: url("/static/img/krasivo-38.jpg");
+}
