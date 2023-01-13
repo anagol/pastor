@@ -4,8 +4,13 @@ li {
     font-size: 20px;
 }
 
+ul {
+    font-family: sans-serif;
+    font-weight: bold;
+}
 a {
     text-decoration: none;
+
 }
 
 .nav{
