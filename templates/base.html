@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>{{ title }}</title>
+</head>
+<body>
+{% block header %}
+    <header>
+        <div class="part">
+
+            <div class="nav">
+                <ul>
+                    <li><a class="p-2 text-light" href="{{ url_for('index') }}">Главная страница</a></li>
+                    <li><a class="p-2 text-light" href="{{ url_for('icon') }}">Храмовая икона</a></li>
+                    <li><a class="p-2 text-light" href="{{ url_for('history') }}">История храма</a></li>
+                    <li><a class="p-2 text-light" href="{{ url_for('about') }}">Наш храм</a></li>
+                    <li><a class="p-2 text-light" href="{{ url_for('timetable') }}">Расписание богослужений</a></li>
+                    <li><a class="p-2 text-light" href="{{ url_for('news') }}">Новости храма</a></li>
+                    <li><a class="p-2 text-light" href="{{ url_for('priest') }}">Настоятель храма</a></li>
+                    <li><a class="p-2 text-light" href="{{ url_for('contacts') }}">Контакты</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </header>
+{% endblock %}
+{% block content %}
+{% endblock %}
+</body>
+</html>
