@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+<title>{{ nws['news_headline'] }}</title>
+
+
+
+{% block content %}
+
+    <h2>{% block title %}{{ nws['news_headline'] }}{% endblock %}</h2>
+    <h4>{{ nws['news_date'] }}</h4>
+    <div class="verse_content">
+        <p class="main-verse">{{ nws['news_content'] }}</p>
+        <p class="main-verse">{{ nws['news_photo'] }}</p>
+    </div>
+    <p class="list"><a href="{{ '/news' }}">К списку</a></p>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>{{ title }}</h1>
+    <div>
+        {% for nws in edit_news %}
+            <div class="news_edit">
+                <h3>{{ nws['news_headline'] }}</h3>
+                <a href="{{ url_for('edit', id=nws['id']) }}">
+                    <h3>Редактировать</h3></a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

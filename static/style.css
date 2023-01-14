@@ -2,6 +2,7 @@ li {
     display: inline-block;
     margin: 20px;
     font-size: 20px;
+
 }
 
 ul {
@@ -10,6 +11,7 @@ ul {
 }
 a {
     text-decoration: none;
+    color: chocolate;
 
 }
 
