@@ -4,13 +4,15 @@
 
 
 {% block content %}
-
-    <h2>{% block title %}{{ nws['news_headline'] }}{% endblock %}</h2>
-    <h4>{{ nws['news_date'] }}</h4>
-    <div class="verse_content">
-        <p class="main-verse">{{ nws['news_content'] }}</p>
-        <p class="main-verse">{{ nws['news_photo'] }}</p>
+    <h1 class="news-title">{% block title %}{{ nws['news_headline'] }}{% endblock %}</h1>
+    <div class="content">
+        {#    <h3>{{ nws['news_date'].strftime('%d %B %Y') }}</h3>#}
+        <div class="news_content">
+            <p class="main-verse">{{ nws['news_content'] }}</p>
+        </div>
+        <div class="news_img">
+            <img src="{{ nws['news_photo'] }}" alt="">
+        </div>
     </div>
-    <p class="list"><a href="{{ '/news' }}">К списку</a></p>
-
+    <p class="list"><a href="{{ '/news' }}">К списку новостей</a></p>
 {% endblock %}

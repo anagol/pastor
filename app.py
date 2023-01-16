@@ -1,10 +1,12 @@
 from flask import Flask, redirect, render_template, url_for, request, flash
+from flask_bootstrap import Bootstrap5
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import func
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user
 import psycopg2
-from datetime import datetime
+import locale
+locale.setlocale(locale.LC_ALL, 'ru_RU.UTF-8')
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'anatolihalasny1969'
@@ -14,6 +16,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///pastor.db"
 db.init_app(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
+bootstrap = Bootstrap5(app)
 
 
 class User(UserMixin, db.Model):
@@ -45,8 +48,8 @@ class News(db.Model):
         return '<News %r>' % self.news_headline
 
 
-# with app.app_context():
-#     db.create_all()
+with app.app_context():
+    db.create_all()
 
 
 @login_manager.user_loader

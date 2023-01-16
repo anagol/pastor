@@ -1,12 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
     <h1>{{ title }}</h1>
+
     <div class="news">
         {% for news in news_total %}
-            <h3>{{ news['news_date'] }}</h3>
-            <a href="{{ url_for('news_page', nws_id=news['id']) }}">
+            <div class="card col-md-3">
+                <img src="{{ news['news_photo'] }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ news['news_date'].strftime('%d %B %Y') }}</h5>
+                    <h5 class="card-title">{{ news['news_headline'] }}</h5>
+                    <p class="card-text">{{ news['news_content'] }}</p>
+                </div>
 
-                <h3>{{ news['news_headline'] }}</h3></a>
+                <div class="card-body">
+                    <a href="{{ url_for('news_page', nws_id=news['id']) }}" class="card-link">Читать дальше</a>
+
+                </div>
+            </div>
 
         {% endfor %}
     </div>
