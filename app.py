@@ -84,7 +84,7 @@ def news():
 
 # ----------------Создание новости-----------------------------
 @app.route('/create_news', methods=['GET', 'POST'])
-# @login_required
+@login_required
 def create_news():
     if request.method == "POST":
         # news_date = request.form["news_date"]
@@ -108,7 +108,7 @@ def news_page(nws_id):
 
 # --------------------Страница редактирования новости-------------------------------------------------------------------
 @app.route('/news_edit')
-# @login_required
+@login_required
 def news_edit():
     edit_news = News.query.all()
     return render_template('news_edit.html', title='Редактируем', edit_news=edit_news)
@@ -116,7 +116,7 @@ def news_edit():
 
 #  --------------------Редактирем новость-------------------------------------------------------------------------------
 @app.route('/<int:id>/edit', methods=('GET', 'POST'))
-# @login_required
+@login_required
 def edit(id):
     edit_news = News.query.get_or_404(id)
     if request.method == 'POST':
@@ -132,19 +132,13 @@ def edit(id):
 
 #  --------------------Удаляем новость------------------------------------------------------------------------------------
 @app.route('/<int:id>/delete', methods=('POST',))
-# @login_required
+@login_required
 def delete(id):
     nws = News.query.get_or_404(id)
     db.session.delete(nws)
     db.session.flush()
     db.session.commit()
     return redirect(url_for('news'))
-
-
-# -------------------История храма----------------
-@app.route('/history')
-def history():
-    return render_template('history.html', title='История храма')
 
 
 # -------------------Икона храма----------------
@@ -212,7 +206,7 @@ def login():
 
 
 @app.route('/logout')
-# @login_required
+@login_required
 def logout():
     logout_user()
     return redirect(url_for('index'))

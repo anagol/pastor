@@ -1,26 +1,28 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>{% block title %}Добавить новость{% endblock %}</h1>
+    <div class="container">
+        <h1>{% block title %}Добавить новость{% endblock %}</h1>
 
-    <form method="post">
-        <div class="form-group">
-            <label for="news_headline" class="text-light">Заголовок новости</label>
-            <input type="text" name="news_headline" placeholder="Заголовок новости" class="form-control"
-                   value="{{ request.form['news_headline'] }}">
-        </div>
-        <div class="form-group">
-            <label for="news_content" class="text-light">Текст новости</label>
-            <textarea name='news_content' placeholder="Текст новости" class="form-control" wrap="soft" cols="20">
+        <form method="post">
+            <div class="form-group">
+                <label for="news_headline" class="text-light">Заголовок новости</label>
+                <input type="text" name="news_headline" placeholder="Заголовок новости" class="form-control"
+                       value="{{ request.form['news_headline'] }}">
+            </div>
+            <div class="form-group">
+                <label for="news_content" class="text-light">Текст новости</label>
+                <textarea name='news_content' placeholder="Текст новости" class="form-control" wrap="soft" cols="20">
                 {{ request.form['news_content'] }}
             </textarea>
-        </div>
-        <div class="form-group">
-            <label for="news_photo" class="text-light">Фото новости</label>
-            <textarea name='news_photo' placeholder="Фото новости" class="form-control"
-                     >{{ request.form['news_photo'] }}</textarea>
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary">Записать</button>
-        </div>
-    </form>
+            </div>
+            <div class="form-group">
+                <label for="news_photo" class="text-light">Фото новости</label>
+                <textarea name='news_photo' placeholder="Фото новости" class="form-control"
+                >{{ request.form['news_photo'] }}</textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Записать</button>
+            </div>
+        </form>
+    </div>
 {% endblock %}

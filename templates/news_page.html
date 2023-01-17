@@ -1,18 +1,15 @@
 {% extends 'base.html' %}
 <title>{{ nws['news_headline'] }}</title>
 
-
-
 {% block content %}
-    <h1 class="news-title">{% block title %}{{ nws['news_headline'] }}{% endblock %}</h1>
-    <div class="content">
-        {#    <h3>{{ nws['news_date'].strftime('%d %B %Y') }}</h3>#}
-        <div class="news_content">
-            <p class="main-verse">{{ nws['news_content'] }}</p>
-        </div>
-        <div class="news_img">
-            <img src="{{ nws['news_photo'] }}" alt="">
+    <div class="container">
+        <div class="news-page">
+            <h1 class="news-title">{% block title %}{{ nws['news_headline'] }}{% endblock %}</h1>
+            <div class="content">
+                <img src="{{ nws['news_photo'] }}" width="50%" alt="">
+                <p class="main-verse">{{ nws['news_content'] }}</p>
+            </div>
+            <p class="list"><a href="{{ '/news' }}">К списку новостей</a></p>
         </div>
     </div>
-    <p class="list"><a href="{{ '/news' }}">К списку новостей</a></p>
 {% endblock %}

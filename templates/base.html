@@ -18,30 +18,53 @@
 <body>
 {% block header %}
     <header>
-        <div class="part">
+        <nav class="navbar navbar-expand-sm navbar-dark" aria-label="Third navbar example">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <div class="nav">
-                <ul>
-                    <li><a class="p-2 text-light" href="{{ url_for('index') }}">Главная страница</a></li>
-                    <li><a class="p-2 text-light" href="{{ url_for('icon') }}">Храмовая икона</a></li>
-                    <li><a class="p-2 text-light" href="{{ url_for('history') }}">История храма</a></li>
-                    <li><a class="p-2 text-light" href="{{ url_for('about') }}">Наш храм</a></li>
-                    <li><a class="p-2 text-light" href="{{ url_for('timetable') }}">Расписание богослужений</a></li>
-                    <li><a class="p-2 text-light" href="{{ url_for('news') }}">Новости храма</a></li>
-                    <li><a class="p-2 text-light" href="{{ url_for('priest') }}">Настоятель храма</a></li>
-                    <li><a class="p-2 text-light" href="{{ url_for('contacts') }}">Контакты</a></li>
-                </ul>
+                <div class="collapse navbar-collapse" id="navbarsExample03">
+                    <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="{{ url_for('index') }}">Главная страница</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="{{ url_for('icon') }}">Храмовая икона</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('about') }}">Наш храм</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('timetable') }}">Расписание богослужений</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="{{ url_for('news') }}">Новости храма</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="{{ url_for('priest') }}">Настоятель храма</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="{{ url_for('contacts') }}">Контакты</a>
+                        </li>
+                    </ul>
 
+                </div>
             </div>
-        </div>
+        </nav>
+
     </header>
 {% endblock %}
 
-{% block content %}
+{% block content %}{% endblock %}
+
+{% block footer %}
+<div class="footer">
+
 {% endblock %}
-
 {% block scripts %}
-
     {{ bootstrap.load_js() }}
 {% endblock %}
 </body>

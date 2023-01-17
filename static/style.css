@@ -1,80 +1,16 @@
-/* Указываем box sizing */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+* {
+    margin: 0;
+    padding: 0;
 }
 
-/* Убираем внутренние отступы */
-ul[class],
-ol[class] {
-  padding: 0;
+@font-face {
+    font-family: Wooden;
+    src: url('/static/fonts/Wooden.ttf') format('truetype');
 }
 
-/* Убираем внешние отступы */
-body,
-h1,
-h2,
-h3,
-h4,
-p,
-ul[class],
-ol[class],
-li,
-figure,
-figcaption,
-blockquote,
-dl,
-dd {
-  margin: 0;
-}
-
-/* Выставляем основные настройки по-умолчанию для body */
-body {
-  min-height: 100vh;
-  scroll-behavior: smooth;
-  text-rendering: optimizeSpeed;
-  line-height: 1.5;
-}
-
-/* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
-ul[class],
-ol[class] {
-  list-style: none;
-}
-
-/* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
-a:not([class]) {
-  text-decoration-skip-ink: auto;
-}
-
-/* Упрощаем работу с изображениями */
-img {
-  max-width: 100%;
-  display: block;
-}
-
-/* Указываем понятную периодичность в потоке данных у article*/
-article > * + * {
-  margin-top: 1em;
-}
-
-/* Наследуем шрифты для инпутов и кнопок */
-input,
-button,
-textarea,
-select {
-  font: inherit;
-}
-
-/* Удаляем все анимации и переходы для людей, которые предпочитай их не использовать */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+@font-face {
+    font-family: Vezitsa;
+    src: url('/static/fonts/Vezitsa.ttf') format('truetype');
 }
 
 
@@ -83,30 +19,29 @@ li {
     margin: 10px;
     font-size: 20px;
 
+
 }
 
 ul {
     font-family: sans-serif;
     font-weight: bold;
+
 }
 
 a {
     text-decoration: none;
-    color: chocolate;
-
-}
-
-.nav {
-    background-color: #503e27;
+    font-family: Vezitsa;
+    color: #d21e48;
 }
 
 body {
-    background-image: url("/static/img/krasivo-38.jpg");
+    background-image: url("/static/img/sky.jpg");
 }
 
 .content {
-    margin: 40px;
-    display: flex;
+    text-align: justify;
+    white-space: pre-wrap;
+
 }
 
 .content h2 {
@@ -114,18 +49,17 @@ body {
 }
 
 .content img {
-    margin: 5px;
-
+    margin: 15px;
+    float: right;
 }
 
-.content p {
-    margin: 5px;
+p, h2, h3 {
+    font-family: Vezitsa;
 }
 
 .news_content {
     font-size: 18px;
     text-align: justify;
-    margin-right: 15px;
     width: 50%;
     white-space: pre-wrap;
 }
@@ -141,7 +75,6 @@ body {
 .card {
     margin: 10px;
     padding: 10px;
-
 }
 
 .news {
@@ -153,12 +86,8 @@ body {
 h1 {
     text-align: center;
     padding: 20px;
-}
-
-img {
-  width: available;
-  height: available;
-
+    font-family: Wooden;
+    color: #0c1c83;
 }
 
 .list {
@@ -166,7 +95,54 @@ img {
     font-size: 30px;
 }
 
-.news_img {
-    width: 50%;
+.contact {
+    white-space: pre-wrap;
 }
 
+.container-fluid {
+    background-color: #dff4f2;
+}
+
+.nav-link {
+    font-size: 25px;
+    color: #0c1c83;
+}
+
+.nav-link:hover {
+    color: brown;
+}
+
+.navbar-nav {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.priest h2{
+    text-align: center;
+    margin-bottom: 25px;
+    color: saddlebrown;
+}
+.priest img {
+    float: left;
+    width: 30%;
+}
+
+.priest p {
+    white-space: pre-wrap;
+}
+
+.icon-content {
+    font-size: 18px;
+    text-align: justify;
+}
+
+.icon-content p {
+    text-align: justify;
+    white-space: normal;
+}
+
+.icon-content img {
+    width: 40%;
+    float: right;
+    margin: 10px;
+}
