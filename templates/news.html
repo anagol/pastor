@@ -4,22 +4,42 @@
         <h1>{{ title }}</h1>
 
         <div class="news">
-            {% for news in news_total %}
-                <div class="card col-md-3">
-                    <img src="{{ news['news_photo'] }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ news['news_date'].strftime('%d %B %Y') }}</h5>
-                        <h5 class="card-title">{{ news['news_headline'] }}</h5>
-                        <p class="card-text">{{ news['news_content'] }}</p>
-                    </div>
 
-                    <div class="card-body">
-                        <a href="{{ url_for('news_page', nws_id=news['id']) }}" class="card-link">Читать дальше</a>
-
-                    </div>
-                </div>
-
-            {% endfor %}
+            {#            {% for news in news_total %}#}
+            {#                <div class="card col-md-3">#}
+            {#                    <img src="{{ news['news_photo'] }}" class="card-img-top" alt="...">#}
+            {#                    <div class="card-body">#}
+            {#                        <h5 class="card-title">{{ news['news_date'].strftime('%d %B %Y') }}</h5>#}
+            {#                        <h5 class="card-title">{{ news['news_headline'] }}</h5>#}
+            {#                        <p class="card-text">{{ news['news_content'] }}</p>#}
+            {#                    </div>#}
+            {##}
+            {#                    <div class="card-body">#}
+            {#                        <a href="{{ url_for('news_page', nws_id=news['id']) }}" class="card-link">Читать дальше</a>#}
+            {##}
+            {#                    </div>#}
+            {#                </div>#}
+            {#            {% endfor %}#}
         </div>
+
+        {% for name in names %}
+            {% if 'item'  in name.get('href') %}
+                {% for result_url in name %}
+                    {% for result_text in name %}
+                        <p><a href="https://eparhia992.by/{{ name.get('href') }}">{{ result_text }}</a></p>
+                    {% endfor %}
+                {% endfor %}
+
+
+            {% endif %}
+
+        {% endfor %}
+
+        {#        if 'item' in name.get('href'):#}
+        {#        result_text = name.text#}
+        {#        result_url = 'https://eparhia992.by' + name.get('href')#}
+        {#        print(result_url)#}
+
+
     </div>
 {% endblock %}

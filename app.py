@@ -6,6 +6,10 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user
 import psycopg2
 import locale
+import requests
+from bs4 import BeautifulSoup as bs
+import lxml
+
 locale.setlocale(locale.LC_ALL, 'ru_RU.UTF-8')
 
 app = Flask(__name__)
@@ -79,7 +83,8 @@ def about():
 @app.route('/news')
 def news():
     news_total = News.query.all()
-    return render_template('news.html', title='Новости храма', news_total=news_total)
+    return render_template('news.html', title='Новости храма', news_total=news_total, names=names,
+                           )
 
 
 # ----------------Создание новости-----------------------------
@@ -216,6 +221,19 @@ def logout():
 def error_401():
     return render_template('401.html', title='ОШИБКА 401')
 
+
+# ---------------Парсер-----------
+url_1 = 'https://eparhia992.by/component/search/?searchword=%D0%BA%D1%83%D1%88%D0%BD%D0%B5%D1%80%D0%B5%D0%B2%D0%B8%D1%87&searchphrase=all&limit=0'
+
+response = requests.get(url_1)
+soup = bs(response.text, "html.parser")
+names = soup.find_all('a')
+
+for name in names:
+    if 'item' in name.get('href'):
+        result_text = name.text
+        result_url = 'https://eparhia992.by' + name.get('href')
+# ----------------------------------------------------------
 
 if __name__ == '__main__':
     app.run()

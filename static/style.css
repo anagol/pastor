@@ -30,12 +30,12 @@ ul {
 
 a {
     text-decoration: none;
-    font-family: Vezitsa;
     color: #d21e48;
 }
 
 body {
     background-image: url("/static/img/sky.jpg");
+    background-attachment: fixed;
 }
 
 .content {
@@ -53,7 +53,7 @@ body {
     float: right;
 }
 
-p, h2, h3 {
+p, h2, h3, a {
     font-family: Vezitsa;
 }
 
@@ -65,7 +65,7 @@ p, h2, h3 {
 }
 
 .card-text {
-    background: #f4eddf; /* Цвет фона */
+    background: #dff1f4; /* Цвет фона */
     padding: 10px; /* Поля вокруг текста */
     white-space: nowrap; /* Текст не переносится */
     overflow: hidden; /* Обрезаем всё за пределами блока */
@@ -75,6 +75,8 @@ p, h2, h3 {
 .card {
     margin: 10px;
     padding: 10px;
+    background-color: #b7cdf5;
+    box-shadow: -5px -5px 5px -5px rgba(34, 60, 80, 0.6) inset;
 }
 
 .news {
@@ -100,7 +102,7 @@ h1 {
 }
 
 .container-fluid {
-    background-color: #dff4f2;
+    background-color: #8da6ff;
 }
 
 .nav-link {
