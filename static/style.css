@@ -106,7 +106,7 @@ h1 {
 }
 
 .nav-link {
-    font-size: 25px;
+    font-size: 20px;
     color: #0c1c83;
 }
 
@@ -150,6 +150,6 @@ h1 {
 }
 
 .h-img {
-    width: 1920px;
+    width: 100%;
 
 }

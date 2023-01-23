@@ -8,7 +8,7 @@ import psycopg2
 import locale
 import requests
 from bs4 import BeautifulSoup as bs
-from flask_paginate import Pagination, get_page_args
+# from flask_paginate import Pagination, get_page_args
 import lxml
 
 # ---------------Парсер-----------
