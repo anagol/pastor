@@ -22,24 +22,11 @@
             {#            {% endfor %}#}
         </div>
 
-        {% for name in names %}
-            {% if 'item'  in name.get('href') %}
-                {% for result_url in name %}
-                    {% for result_text in name %}
-                        <p><a href="https://eparhia992.by/{{ name.get('href') }}">{{ result_text }}</a></p>
-                    {% endfor %}
-                {% endfor %}
-
-
-            {% endif %}
-
+        {% for i in range(string_result) %}
+            <p>{{ pub_date[i].text }}</p>
+            <p><a href="https://eparhia992.by/{{ name_result[i].get('href') }}">{{ name_result[i].text }}</a></p>
+            <br>
         {% endfor %}
-
-        {#        if 'item' in name.get('href'):#}
-        {#        result_text = name.text#}
-        {#        result_url = 'https://eparhia992.by' + name.get('href')#}
-        {#        print(result_url)#}
-
-
     </div>
+
 {% endblock %}
