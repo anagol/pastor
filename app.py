@@ -73,6 +73,9 @@ class TimeTable(db.Model):
     time_service_1 = db.Column(db.String, unique=False)
     time_service_2 = db.Column(db.String, unique=False)
     time_service_3 = db.Column(db.String, unique=False)
+    content_time_service_1 = db.Column(db.String, unique=False)
+    content_time_service_2 = db.Column(db.String, unique=False)
+    content_time_service_3 = db.Column(db.String, unique=False)
 
     def __init__(self, timetable_date, timetable_content, time_service_1, time_service_2, time_service_3,
                  content_time_service_1, content_time_service_2, content_time_service_3):
@@ -80,10 +83,10 @@ class TimeTable(db.Model):
         self.timetable_content = timetable_content
         self.time_service_1 = time_service_1
         self.time_service_2 = time_service_2
-        self.time_service_2 = time_service_3
+        self.time_service_3 = time_service_3
         self.content_time_service_1 = content_time_service_1
         self.content_time_service_2 = content_time_service_2
-        self.content_time_service_2 = content_time_service_3
+        self.content_time_service_3 = content_time_service_3
 
     def __repr__(self):
         return '<TimeTable %r>' % self.timetable_content
@@ -198,7 +201,7 @@ def priest():
 # -------------------Расписание богослужений----------------
 @app.route('/timetable')
 def timetable():
-    services_total = News.query.all()
+    services_total = TimeTable.query.all()
     return render_template('timetable.html', title='Расписание богослужений', services_total=services_total)
 
 

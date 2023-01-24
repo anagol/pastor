@@ -5,46 +5,52 @@
 
         <form method="post">
             <div class="form-group">
-                <label for="timetable_date" class="text-light">Дата службы</label>
-                <input type="text" name="timetable_date" placeholder="Дата службы" class="form-control"
+                <label for="timetable_date" class="text-dark">Дата службы</label>
+                <input type="date" name="timetable_date" placeholder="Дата службы" class="form-control"
                        value="{{ request.form['timetable_date'] }}">
             </div>
             <div class="form-group">
-                <label for="timetable_content" class="text-light">Церковный Праздник</label>
+                <label for="timetable_content" class="text-dark">Церковный Праздник</label>
                 <textarea name='timetable_content' placeholder="" class="form-control" wrap="soft" cols="20">
                 {{ request.form['timetable_content'] }}
             </textarea>
             </div>
-             <div class="form-group">
-                <label for="time_service_1" class="text-light">Время службы</label>
-                <input name='time_service_1' placeholder="Время службы" class="form-control" wrap="soft" cols="20">
+            <div class="form-group">
+                <label for="time_service_1" class="text-dark">Время службы</label>
+                <input type="time" name='time_service_1' placeholder="Время службы" class="form-control"
+                       wrap="soft" cols="20">
                 {{ request.form['time_service_1'] }}
             </div>
-             <div class="form-group">
-                <label for="content_time_service_1" class="text-light">Мероприятия службы</label>
-                <textarea name='content_time_service_1' placeholder="Мероприятия службы" class="form-control" wrap="soft" cols="20">
+            <div class="form-group">
+                <label for="content_time_service_1" class="text-dark">Мероприятия службы</label>
+                <textarea name='content_time_service_1' placeholder="Мероприятия службы" class="form-control"
+                          wrap="soft" cols="20">
                 {{ request.form['content_time_service_1'] }}
             </textarea>
             </div>
-              <div class="form-group">
-                <label for="time_service_2" class="text-light">Время службы</label>
-                <input name='time_service_2' placeholder="Время службы" class="form-control" wrap="soft" cols="20">
+            <div class="form-group">
+                <label for="time_service_2" class="text-dark">Время службы</label>
+                <input type="time" name='time_service_2' placeholder="Время службы" class="form-control"
+                       wrap="soft" cols="20">
                 {{ request.form['time_service_2'] }}
             </div>
-             <div class="form-group">
-                <label for="content_time_service_2" class="text-light">Мероприятия службы</label>
-                <textarea name='content_time_service_2' placeholder="Мероприятия службы" class="form-control" wrap="soft" cols="20">
+            <div class="form-group">
+                <label for="content_time_service_2" class="text-dark">Мероприятия службы</label>
+                <textarea name='content_time_service_2' placeholder="Мероприятия службы" class="form-control"
+                          wrap="soft" cols="20">
                 {{ request.form['content_time_service_2'] }}
             </textarea>
             </div>
-              <div class="form-group">
-                <label for="time_service_3" class="text-light">Время службы</label>
-                <input name='time_service_3' placeholder="Время службы" class="form-control" wrap="soft" cols="20">
+            <div class="form-group">
+                <label for="time_service_3" class="text-dark">Время службы</label>
+                <input type="time" name='time_service_3' placeholder="Время службы" class="form-control"
+                       wrap="soft" cols="20">
                 {{ request.form['time_service_3'] }}
             </div>
-             <div class="form-group">
-                <label for="content_time_service_3" class="text-light">Мероприятия службы</label>
-                <textarea name='content_time_service_3' placeholder="Мероприятия службы" class="form-control" wrap="soft" cols="20">
+            <div class="form-group">
+                <label for="content_time_service_3" class="text-dark">Мероприятия службы</label>
+                <textarea name='content_time_service_3' placeholder="Мероприятия службы" class="form-control"
+                          wrap="soft" cols="20">
                 {{ request.form['content_time_service_3'] }}
             </textarea>
             </div>

@@ -2,14 +2,20 @@
 {% block content %}
     <div class="container">
         <h1>{{ title }}</h1>
-    <div>
-        {% for service in services_total %}
-{#            <p>Создано {{ service['timetable_date_create'].strftime('%d %B %Y') }}</p>#}
-            {{ timetable_content }}
-
-            <br><br>
-        {% endfor %}
-    </div>
+        <div>
+            {% for service in services_total %}
+{#                <p>Создано {{ service.timetable_date_create.strftime('%d %B %Y') }}</p>#}
+                <p>Служба {{ service.timetable_date }}</p>
+                <p>{{ service.timetable_content }}</p>
+                <p>Служба {{ service.time_service_1 }}</p>
+                <p>{{ service.content_time_service_1 }}</p>
+                <p>Служба {{ service.time_service_2 }}</p>
+                <p> {{ service.content_time_service_2 }}</p>
+                <p>Служба {{ service.time_service_3 }}</p>
+                <p> {{ service.content_time_service_3 }}</p>
+                <br><br>
+            {% endfor %}
+        </div>
 
     </div>
 
