@@ -65,8 +65,32 @@ class News(db.Model):
         return '<News %r>' % self.news_headline
 
 
-# with app.app_context():
-#     db.create_all()
+class TimeTable(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    timetable_date_create = db.Column(db.DateTime(timezone=True), nullable=False, default=func.current_timestamp())
+    timetable_date = db.Column(db.String, unique=False)
+    timetable_content = db.Column(db.Text, unique=False)
+    time_service_1 = db.Column(db.String, unique=False)
+    time_service_2 = db.Column(db.String, unique=False)
+    time_service_3 = db.Column(db.String, unique=False)
+
+    def __init__(self, timetable_date, timetable_content, time_service_1, time_service_2, time_service_3,
+                 content_time_service_1, content_time_service_2, content_time_service_3):
+        self.timetable_date = timetable_date
+        self.timetable_content = timetable_content
+        self.time_service_1 = time_service_1
+        self.time_service_2 = time_service_2
+        self.time_service_2 = time_service_3
+        self.content_time_service_1 = content_time_service_1
+        self.content_time_service_2 = content_time_service_2
+        self.content_time_service_2 = content_time_service_3
+
+    def __repr__(self):
+        return '<TimeTable %r>' % self.timetable_content
+
+
+with app.app_context():
+    db.create_all()
 
 
 @login_manager.user_loader
@@ -174,7 +198,33 @@ def priest():
 # -------------------Расписание богослужений----------------
 @app.route('/timetable')
 def timetable():
-    return render_template('timetable.html', title='Расписание богослужений')
+    services_total = News.query.all()
+    return render_template('timetable.html', title='Расписание богослужений', services_total=services_total)
+
+
+# -------------------Создать расписание богослужений----------------
+@app.route('/create_service', methods=['GET', 'POST'])
+@login_required
+def create_service():
+    if request.method == "POST":
+        timetable_date = request.form["timetable_date"]
+        timetable_content = request.form["timetable_content"]
+        time_service_1 = request.form["time_service_1"]
+        time_service_2 = request.form["time_service_2"]
+        time_service_3 = request.form["time_service_3"]
+        content_time_service_1 = request.form["content_time_service_1"]
+        content_time_service_2 = request.form["content_time_service_2"]
+        content_time_service_3 = request.form["content_time_service_3"]
+
+        serv = TimeTable(timetable_date=timetable_date, timetable_content=timetable_content,
+                         time_service_1=time_service_1, time_service_2=time_service_2, time_service_3=time_service_3,
+                         content_time_service_1=content_time_service_1, content_time_service_2=content_time_service_2,
+                         content_time_service_3=content_time_service_3)
+        db.session.add(serv)
+        db.session.flush()
+        db.session.commit()
+        return redirect(url_for('timetable'))
+    return render_template('create_service.html', title='Добавляем службу')
 
 
 # -------------------Контакты----------------
@@ -236,4 +286,4 @@ def error_401():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)

@@ -1,7 +1,16 @@
 {% extends 'base.html' %}
-
 {% block content %}
-    <h1>{{ title }}</h1>
+    <div class="container">
+        <h1>{{ title }}</h1>
+    <div>
+        {% for service in services_total %}
+{#            <p>Создано {{ service['timetable_date_create'].strftime('%d %B %Y') }}</p>#}
+            {{ timetable_content }}
 
+            <br><br>
+        {% endfor %}
+    </div>
+
+    </div>
 
 {% endblock %}
