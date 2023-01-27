@@ -16,21 +16,17 @@ html {
 * {
     margin: 0;
     padding: 0;
-
 }
 
 li {
     display: inline-block;
     margin: 10px;
     font-size: 20px;
-
-
 }
 
 ul {
     font-family: sans-serif;
     font-weight: bold;
-
 }
 
 a {
@@ -47,7 +43,6 @@ body {
 .content {
     text-align: justify;
     white-space: pre-wrap;
-
 }
 
 .content h2 {
@@ -61,6 +56,7 @@ body {
 
 p, h2, h3, a, h4 {
     font-family: Vezitsa;
+    color: darkblue;
 }
 
 .news_content {
@@ -86,9 +82,29 @@ p, h2, h3, a, h4 {
 }
 
 .news {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    /*display: flex;*/
+    /*flex-wrap: wrap;*/
+    /*justify-content: center;*/
+    font-size: 24px;
+    line-height: 90%;
+}
+.news p {
+    /*display: flex;*/
+    /*flex-wrap: wrap;*/
+    /*justify-content: center;*/
+    font-size: 24px;
+    font-family: Vezitsa, serif;
+    color: #83530c;
+
+}
+.news span{
+    /*display: flex;*/
+    /*flex-wrap: wrap;*/
+    /*justify-content: center;*/
+    font-size: 24px;
+    font-family: Vezitsa, serif;
+    color: #83530c;
+
 }
 
 h1 {
@@ -104,7 +120,9 @@ h1 {
 }
 
 .contact {
-    white-space: pre-wrap;
+    /*white-space: pre-wrap;*/
+    font-size: 22px;
+    color: darkblue;
 }
 
 .container-fluid {
@@ -138,16 +156,28 @@ h1 {
 
 .priest img {
     /*float: inside;*/
-    width: 20%;
+    width: 30%;
+    height: 30%;
+    float: right;
+    margin: 10px 50px  10px 10px;
+    border-radius: 20px;
+    box-shadow: 10px 5px 5px #7b7373;
 }
 
 .priest p {
-    white-space: pre-wrap;
+    color: darkblue;
+    font-size: 22px;
+}
+
+.prst  {
+    text-align: center;
+    color:blue;
 }
 
 .icon-content {
     font-size: 18px;
     text-align: justify;
+    color: darkblue;
     /*white-space: pre-wrap;*/
 }
 
@@ -160,8 +190,10 @@ h1 {
 
 .icon-content img {
     width: 40%;
+    height: auto;
     float: right;
     margin: 10px;
+    border-radius: 20px;
 }
 
 .h-img {
@@ -182,8 +214,31 @@ footer {
     justify-content: center;
     align-items: center;
     position: relative;
+}
 
+.index-content {
+    color: darkblue;
+    font-size: 22px;
+    text-align: justify;
+}
 
+.btn a{
+    color: #7b7373;
+}
 
+.address p {
+    font-size: 24px;
+    color: blue;
+}
 
+.address {
+    display: flex;
+}
+
+.addr{
+    font-size: 24px;
+}
+
+iframe {
+    margin-left: 50px;
 }
