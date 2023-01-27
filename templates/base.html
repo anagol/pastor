@@ -35,9 +35,9 @@
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="{{ url_for('icon') }}">Храмовая икона</a>
                         </li>
-{#                        <li class="nav-item">#}
-{#                            <a class="nav-link" href="{{ url_for('about') }}">Наш храм</a>#}
-{#                        </li>#}
+                        {#                        <li class="nav-item">#}
+                        {#                            <a class="nav-link" href="{{ url_for('about') }}">Наш храм</a>#}
+                        {#                        </li>#}
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url_for('timetable') }}">Расписание богослужений</a>
                         </li>
@@ -62,12 +62,27 @@
 {% block content %}{% endblock %}
 
 {% block footer %}
-<div class="footer">
+
+            <footer class="text-center text-white" style="background-color: #8da6ff;">
+                <div class="container p-4 pb-0">
+                    <section class="">
+                        <p class="d-flex justify-content-center align-items-center">
+                            <button type="button" class="btn btn-outline-light btn-rounded">
+                                <a href="{{ url_for('login') }}">Sign in!</a>
+                            </button>
+                        </p>
+                    </section>
+                </div>
+
+                <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                    © 2023 Copyright: A.Halasny
+                </div>
+            </footer>
 
 {% endblock %}
 {% block scripts %}
     {{ bootstrap.load_js() }}
 {% endblock %}
-</div>
+
 </body>
 </html>

@@ -5,22 +5,23 @@ from sqlalchemy import func
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user
 import psycopg2
+from parser import Parser
 import locale
 import requests
-from bs4 import BeautifulSoup as bs
+# from bs4 import BeautifulSoup as bs
 # from flask_paginate import Pagination, get_page_args
 import lxml
 
-# ---------------Парсер-----------
-url_1 = 'https://eparhia992.by/component/search/?searchword=%D0%BA%D1%83%D1%88%D0%BD%D0%B5%D1%80%D0%B5%D0%B2%D0%B8%D1%87&searchphrase=all&limit=0'
-
-response = requests.get(url_1)
-soup = bs(response.text, "html.parser")
-names = soup.find_all('a')
-pub_date = soup.find_all(class_='result-created')
-name_result = [x for x in names if 'item' in x.get('href')]
-string_result = min(len(pub_date), len(name_result))
-# ----------------------------------------------------------
+# # ---------------Парсер-----------
+# url_1 = 'https://eparhia992.by/component/search/?searchword=%D0%BA%D1%83%D1%88%D0%BD%D0%B5%D1%80%D0%B5%D0%B2%D0%B8%D1%87&searchphrase=all&limit=0'
+#
+# response = requests.get(url_1)
+# soup = bs(response.text, "html.parser")
+# names = soup.find_all('a')
+# pub_date = soup.find_all(class_='result-created')
+# name_result = [x for x in names if 'item' in x.get('href')]
+# string_result = min(len(pub_date), len(name_result))
+# # ----------------------------------------------------------
 
 
 locale.setlocale(locale.LC_ALL, 'ru_RU.UTF-8')
@@ -92,10 +93,6 @@ class TimeTable(db.Model):
         return '<TimeTable %r>' % self.timetable_content
 
 
-with app.app_context():
-    db.create_all()
-
-
 @login_manager.user_loader
 def load_user(id):
     return User.query.get(int(id))
@@ -123,8 +120,8 @@ def about():
 @app.route('/news')
 def news():
     news_total = News.query.all()
-    return render_template('news.html', title='Новости храма', news_total=news_total, names=names,
-                           pub_date=pub_date, name_result=name_result, string_result=string_result)
+    return render_template('news.html', title='Новости храма', news_total=news_total, names=Parser.names,
+                           pub_date=Parser.pub_date, name_result=Parser.name_result, string_result=Parser.string_result)
 
 
 # ----------------Создание новости-----------------------------
@@ -248,8 +245,8 @@ def register():
     if request.method == "POST":
         username = request.form["username"]
         password_hash = generate_password_hash(request.form["password"])
-        register = User(username=username, password=password_hash)
-        db.session.add(register)
+        registration = User(username=username, password=password_hash)
+        db.session.add(registration)
         db.session.flush()
         db.session.commit()
         flash('Вы успешно зарегистрированы, теперь можете войти в систему!')
@@ -290,3 +287,6 @@ def error_401():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+    with app.app_context():
+        db.create_all()
