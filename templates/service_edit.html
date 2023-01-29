@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <h1>{{ title }}</h1>
+        <div>
+            {% for srvc in service_edit %}
+                <div class="service_edit">
+                    <h3>{{ srvc['timetable_content'] }}</h3>
+                    <a href="{{ url_for('edit_service', id=srvc['id']) }}">
+                        <h3>Редактировать</h3></a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

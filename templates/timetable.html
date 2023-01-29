@@ -5,14 +5,14 @@
         <div>
             {% for service in services_total %}
 {#                <p>Создано {{ service.timetable_date_create.strftime('%d %B %Y') }}</p>#}
-                <p>Служба {{ service.timetable_date }}</p>
-                <p>{{ service.timetable_content }}</p>
-                <p>Служба {{ service.time_service_1 }}</p>
-                <p>{{ service.content_time_service_1 }}</p>
-                <p>Служба {{ service.time_service_2 }}</p>
-                <p> {{ service.content_time_service_2 }}</p>
-                <p>Служба {{ service.time_service_3 }}</p>
-                <p> {{ service.content_time_service_3 }}</p>
+                <h3>Расписание богослужений на {{ service.timetable_date }}</h3>
+                <p class="service">{{ service.timetable_content }}</p>
+                <h3>{{ service.time_service_1 }}</h3>
+                <p class="service">{{ service.content_time_service_1 }}</p>
+                <h3>{{ service.time_service_2 }}</h3>
+                <p class="service"> {{ service.content_time_service_2 }}</p>
+                <h3>{{ service.time_service_3 }}</h3>
+                <p class="service"> {{ service.content_time_service_3 }}</p>
                 <br><br>
             {% endfor %}
         </div>

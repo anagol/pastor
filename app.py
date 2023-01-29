@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template, url_for, request, flash
+from flask import Flask, redirect, render_template, url_for, request
 from flask_bootstrap import Bootstrap5
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import func
@@ -7,22 +7,6 @@ from flask_login import LoginManager, UserMixin, login_user, login_required, log
 import psycopg2
 from parser import Parser
 import locale
-import requests
-# from bs4 import BeautifulSoup as bs
-# from flask_paginate import Pagination, get_page_args
-import lxml
-
-# # ---------------Парсер-----------
-# url_1 = 'https://eparhia992.by/component/search/?searchword=%D0%BA%D1%83%D1%88%D0%BD%D0%B5%D1%80%D0%B5%D0%B2%D0%B8%D1%87&searchphrase=all&limit=0'
-#
-# response = requests.get(url_1)
-# soup = bs(response.text, "html.parser")
-# names = soup.find_all('a')
-# pub_date = soup.find_all(class_='result-created')
-# name_result = [x for x in names if 'item' in x.get('href')]
-# string_result = min(len(pub_date), len(name_result))
-# # ----------------------------------------------------------
-
 
 locale.setlocale(locale.LC_ALL, 'ru_RU.UTF-8')
 
@@ -169,10 +153,10 @@ def edit(id):
         db.session.commit()
         return redirect('/news')
     else:
-        return render_template('edit.html', edit_news=edit_news)
+        return render_template('edit_news.html', edit_news=edit_news)
 
 
-#  --------------------Удаляем новость------------------------------------------------------------------------------------
+#  --------------------Удаляем новость----------------------------------------------------------------------------------
 @app.route('/<int:id>/delete', methods=('POST',))
 @login_required
 def delete(id):
@@ -181,25 +165,6 @@ def delete(id):
     db.session.flush()
     db.session.commit()
     return redirect(url_for('news'))
-
-
-# -------------------Икона храма----------------
-@app.route('/icon')
-def icon():
-    return render_template('icon.html', title='Храмовая икона')
-
-
-# -------------------Настоятель храма----------------
-@app.route('/priest')
-def priest():
-    return render_template('priest.html', title='Настоятель храма')
-
-
-# -------------------Расписание богослужений----------------
-@app.route('/timetable')
-def timetable():
-    services_total = TimeTable.query.all()
-    return render_template('timetable.html', title='Расписание богослужений', services_total=services_total)
 
 
 # -------------------Создать расписание богослужений----------------
@@ -227,6 +192,66 @@ def create_service():
     return render_template('create_service.html', title='Добавляем службу')
 
 
+# --------------------Страница редактирования новости-------------------------------------------------------------------
+@app.route('/service_edit')
+@login_required
+def service_edit():
+    srvc_edit = TimeTable.query.all()
+    return render_template('service_edit.html', title='Редактируем', service_edit=srvc_edit)
+
+
+#  --------------------Редактирем службу-------------------------------------------------------------------------------
+@app.route('/<int:id>/edit_service', methods=('GET', 'POST'))
+@login_required
+def edit_service(id):
+    edit_srvc = TimeTable.query.get_or_404(id)
+    if request.method == "POST":
+        edit_srvc.timetable_date = request.form["timetable_date"]
+        edit_srvc.timetable_content = request.form["timetable_content"]
+        edit_srvc.time_service_1 = request.form["time_service_1"]
+        edit_srvc.time_service_2 = request.form["time_service_2"]
+        edit_srvc.time_service_3 = request.form["time_service_3"]
+        edit_srvc.content_time_service_1 = request.form["content_time_service_1"]
+        edit_srvc.content_time_service_2 = request.form["content_time_service_2"]
+        edit_srvc.content_time_service_3 = request.form["content_time_service_3"]
+
+        db.session.flush()
+        db.session.commit()
+        return redirect('/timetable')
+    else:
+        return render_template('edit_service.html', edit_service=edit_srvc)
+
+
+#  --------------------Удаляем службу----------------------------------------------------------------------------------
+@app.route('/<int:id>/delete_service', methods=('POST',))
+@login_required
+def delete_service(id):
+    srvs = TimeTable.query.get_or_404(id)
+    db.session.delete(srvs)
+    db.session.flush()
+    db.session.commit()
+    return redirect(url_for('timetable'))
+
+
+# -------------------Икона храма----------------
+@app.route('/icon')
+def icon():
+    return render_template('icon.html', title='Храмовая икона')
+
+
+# -------------------Настоятель храма----------------
+@app.route('/priest')
+def priest():
+    return render_template('priest.html', title='Настоятель храма')
+
+
+# -------------------Расписание богослужений----------------
+@app.route('/timetable')
+def timetable():
+    services_total = TimeTable.query.all()
+    return render_template('timetable.html', title='Расписание богослужений', services_total=services_total)
+
+
 # -------------------Контакты----------------
 @app.route('/contacts')
 def contacts():
@@ -235,8 +260,9 @@ def contacts():
 
 # -------------------Админка----------------
 @app.route('/admin')
+@login_required
 def admin():
-    return render_template('admin.html', title='Admin page')
+    return render_template('admin.html', title='Страница администратора')
 
 
 #  --------------------Регистрация-------------------------------------------------------------------------------------
@@ -249,7 +275,6 @@ def register():
         db.session.add(registration)
         db.session.flush()
         db.session.commit()
-        flash('Вы успешно зарегистрированы, теперь можете войти в систему!')
         return redirect(url_for("login"))
     return render_template("register.html", title='Регистрация')
 
@@ -261,13 +286,6 @@ def login():
         username = request.form["username"]
         user = User.query.filter_by(username=username).first()
         login_user(user)
-        if user is None:
-            flash('Неверная пара логин - пароль')
-            return render_template("login.html")
-        if not check_password_hash(user.password, request.form['password']):
-            flash('Неверная пара логин - пароль')
-            return render_template("login.html")
-        flash(f'Вы успешно авторизованы под именем {username}!')
         return redirect(url_for("admin"))
 
     return render_template("login.html", title='Вход')
