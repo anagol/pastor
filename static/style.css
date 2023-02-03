@@ -31,11 +31,11 @@ ul {
 
 a {
     text-decoration: none;
-    color: #d21e48;
+    color: #991f1b;
 }
 
 body {
-    background-image: url("/static/img/sky.jpg");
+    background-color: #97a985;
     background-attachment: fixed;
     width: 100%;
 }
@@ -54,9 +54,9 @@ body {
     float: right;
 }
 
-p, h2, h3, a, h4 {
+p, h2, h3, h4, a {
     font-family: Vezitsa;
-    color: darkblue;
+    color: #991f1b;
 }
 
 .news_content {
@@ -94,7 +94,7 @@ p, h2, h3, a, h4 {
     /*justify-content: center;*/
     font-size: 24px;
     font-family: Vezitsa, serif;
-    color: #83530c;
+    color: #991f1b;
 
 }
 .news span{
@@ -103,7 +103,7 @@ p, h2, h3, a, h4 {
     /*justify-content: center;*/
     font-size: 24px;
     font-family: Vezitsa, serif;
-    color: #83530c;
+    color: #991f1b;
 
 }
 
@@ -111,7 +111,7 @@ h1 {
     text-align: center;
     padding: 20px;
     font-family: Wooden;
-    color: #0c1c83;
+    color: #991f1b;
 }
 
 .list {
@@ -126,16 +126,17 @@ h1 {
 }
 
 .container-fluid {
-    background-color: #8da6ff;
+    background-color: #693622;
 }
 
 .nav-link {
     font-size: 20px;
-    color: #0c1c83;
+    color: white;
+    font-family: Vezitsa;
 }
 
 .nav-link:hover {
-    color: brown;
+    color: #9d9898;
 }
 
 .navbar-nav {
@@ -165,19 +166,19 @@ h1 {
 }
 
 .priest p {
-    color: darkblue;
+    color: #991f1b;
     font-size: 22px;
 }
 
 .prst  {
     text-align: center;
-    color:blue;
+    color:#991f1b;
 }
 
 .icon-content {
     font-size: 18px;
     text-align: justify;
-    color: darkblue;
+    color: #991f1b;
     /*white-space: pre-wrap;*/
 }
 
@@ -203,7 +204,7 @@ h1 {
 
 h4 {
     margin-bottom: 20px;
-    color: #0c1c83;
+    color: #991f1b;
     text-align: center;
     font-size: 28px;
 }
@@ -214,21 +215,22 @@ footer {
     justify-content: center;
     align-items: center;
     position: relative;
+    background-color: #693622;
 }
 
 .index-content {
-    color: darkblue;
+    color: #991f1b;
     font-size: 22px;
     text-align: justify;
 }
 
 .btn a{
-    color: #7b7373;
+    color: #991f1b;
 }
 
 .address p {
     font-size: 24px;
-    color: blue;
+    color: #991f1b;
 }
 
 .address {
@@ -245,4 +247,8 @@ iframe {
 
 .service {
     font-size: 22px;
+}
+
+.h-img {
+    background-image: url("/static/img/header.jpg");
 }
