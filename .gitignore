@@ -25,3 +25,4 @@ htmlcov/
 *,cover
 /instance/pastor.db
 /identifier.sqlite
+.vercel
