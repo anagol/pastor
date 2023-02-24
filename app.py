@@ -21,6 +21,9 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 bootstrap = Bootstrap4(app)
 
+with app.app_context():
+    db.create_all()
+
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -306,6 +309,3 @@ def error_401():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-    with app.app_context():
-        db.create_all()
