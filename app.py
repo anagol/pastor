@@ -14,7 +14,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'anatolihalasny1969'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 db = SQLAlchemy()
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///pastor.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://pysayassddvkyc:0588338afdf8518228f2ef931752e0d4513a04b5981825f8bd792a8e9bced1f9@ec2-3-217-251-77.compute-1.amazonaws.com:5432/d62iuiabfhpqhd"
 db.init_app(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
