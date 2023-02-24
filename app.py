@@ -13,7 +13,7 @@ locale.setlocale(locale.LC_ALL, 'ru_RU.UTF-8')
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'anatolihalasny1969'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy()
+db = SQLAlchemy(app)
 app.config[
     "SQLALCHEMY_DATABASE_URI"] = "postgres://owokvletocgqun:cb6cd3de466cd2f7e1beff9e28bd7de8b26c80f809d4ed741fccda743d771d12@ec2-3-230-122-20.compute-1.amazonaws.com:5432/d4a0p4hp1gjld1"
 db.init_app(app)
