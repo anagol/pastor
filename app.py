@@ -13,13 +13,13 @@ locale.setlocale(locale.LC_ALL, 'ru_RU.UTF-8')
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'anatolihalasny1969'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
+db = SQLAlchemy()
 app.config[
-    "SQLALCHEMY_DATABASE_URI"] = "postgres://owokvletocgqun:cb6cd3de466cd2f7e1beff9e28bd7de8b26c80f809d4ed741fccda743d771d12@ec2-3-230-122-20.compute-1.amazonaws.com:5432/d4a0p4hp1gjld1"
+    "SQLALCHEMY_DATABASE_URI"] = "sqlite:///pastor.db"
 db.init_app(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
-bootstrap = Bootstrap4(app)
+# bootstrap = Bootstrap4(app)
 
 # with app.app_context():
 #     db.create_all()
