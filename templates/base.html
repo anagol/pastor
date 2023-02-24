@@ -7,7 +7,7 @@
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         {% block styles %}
             <!-- Bootstrap CSS -->
-{#            {{ bootstrap.load_css() }}#}
+            {{ bootstrap.load_css() }}
             <link rel="stylesheet" href="/static/style.css">
         {% endblock %}
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -81,7 +81,7 @@
 
 {% endblock %}
 {% block scripts %}
-{#    {{ bootstrap.load_js() }}#}
+    {{ bootstrap.load_js() }}
 {% endblock %}
 
 </body>

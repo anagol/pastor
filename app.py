@@ -19,7 +19,7 @@ app.config[
 db.init_app(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
-# bootstrap = Bootstrap4(app)
+bootstrap = Bootstrap4(app)
 
 # with app.app_context():
 #     db.create_all()
