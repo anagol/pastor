@@ -1,5 +1,5 @@
 from flask import Flask, redirect, render_template, url_for, request
-from flask_bootstrap import Bootstrap5
+from flask_bootstrap import Bootstrap5, Bootstrap4
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import func
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -12,13 +12,17 @@ locale.setlocale(locale.LC_ALL, 'ru_RU.UTF-8')
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'anatolihalasny1969'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy()
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///pastor.db"
+app.config[
+    "SQLALCHEMY_DATABASE_URI"] = "postgres://bebmlshmxbsavm:5eaf97f1e727db7132c996cc0f4528f9c9912023318135c10672542dc8b97ff9@ec2-52-4-104-184.compute-1.amazonaws.com:5432/d4lhd672ah6iuc"
 db.init_app(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
-bootstrap = Bootstrap5(app)
+bootstrap = Bootstrap4(app)
+
+# with app.app_context():
+#     db.create_all()
 
 
 class User(UserMixin, db.Model):
@@ -305,6 +309,3 @@ def error_401():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-    with app.app_context():
-        db.create_all()
