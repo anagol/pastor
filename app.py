@@ -15,7 +15,7 @@ app.config['SECRET_KEY'] = 'anatolihalasny1969'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy()
 app.config[
-    "SQLALCHEMY_DATABASE_URI"] = "sqlite:///pastor.db"
+    "SQLALCHEMY_DATABASE_URI"] = "postgres://bebmlshmxbsavm:5eaf97f1e727db7132c996cc0f4528f9c9912023318135c10672542dc8b97ff9@ec2-52-4-104-184.compute-1.amazonaws.com:5432/d4lhd672ah6iuc"
 db.init_app(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
