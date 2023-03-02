@@ -1,5 +1,6 @@
 from flask import Flask, redirect, render_template, url_for, request
 from flask_bootstrap import Bootstrap5, Bootstrap4
+from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import func
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -13,19 +14,18 @@ locale.setlocale(locale.LC_ALL, 'ru_RU.UTF-8')
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'anatolihalasny1969'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:nataha@localhost:5432/pastor"
 db = SQLAlchemy()
-app.config[
-    "SQLALCHEMY_DATABASE_URI"] = "postgres://bebmlshmxbsavm:5eaf97f1e727db7132c996cc0f4528f9c9912023318135c10672542dc8b97ff9@ec2-52-4-104-184.compute-1.amazonaws.com:5432/d4lhd672ah6iuc"
+migrate = Migrate(app, db)
+
 db.init_app(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 bootstrap = Bootstrap4(app)
 
-# with app.app_context():
-#     db.create_all()
-
 
 class User(UserMixin, db.Model):
+    __tablename__ = 'user'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String(80), unique=True)
     password = db.Column(db.String(250))
@@ -39,6 +39,7 @@ class User(UserMixin, db.Model):
 
 
 class News(db.Model):
+    __tablename__ = 'news'
     id = db.Column(db.Integer, primary_key=True)
     news_date = db.Column(db.DateTime(timezone=True), nullable=False, default=func.current_timestamp())
     news_headline = db.Column(db.String, unique=False)
@@ -55,6 +56,7 @@ class News(db.Model):
 
 
 class TimeTable(db.Model):
+    __tablename__ = 'timetable'
     id = db.Column(db.Integer, primary_key=True)
     timetable_date_create = db.Column(db.DateTime(timezone=True), nullable=False, default=func.current_timestamp())
     timetable_date = db.Column(db.String, unique=False)
@@ -308,4 +310,6 @@ def error_401():
 
 
 if __name__ == '__main__':
+    with app.app_context():
+        db.create_all()
     app.run(debug=True)
