@@ -21,7 +21,7 @@ migrate = Migrate(app, db)
 db.init_app(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
-bootstrap = Bootstrap4(app)
+bootstrap = Bootstrap5(app)
 
 
 class User(UserMixin, db.Model):
