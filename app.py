@@ -6,7 +6,7 @@ from sqlalchemy import func
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user
 import psycopg2
-from parser import Parser
+from parser import *
 import locale
 
 locale.setlocale(locale.LC_ALL, 'ru_RU.UTF-8')

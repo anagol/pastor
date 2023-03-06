@@ -4,15 +4,15 @@
         <h1>{{ title }}</h1>
     <div>
         {% for news in news_total|sort(attribute='news_date', reverse=true) %}
-            <span>Создано {{ news['news_date'].strftime('%d %B %Y') }}</span><br>
-            <a href="{{ url_for('news_page', nws_id=news['id']) }}" class="card-link">{{ news['news_headline'] }}</a>
+            <span class="pub-date">Создано {{ news['news_date'].strftime('%d %B %Y') }}</span><br>
+            <a href="{{ url_for('news_page', nws_id=news['id']) }}" class="card-link" target="_blank">{{ news['news_headline'] }}</a>
             <br><br>
         {% endfor %}
     </div>
 
         {% for i in range(string_result) %}
-            <span>{{ pub_date[i].text }}</span><br>
-            <a href="https://eparhia992.by/{{ name_result[i].get('href') }}">{{ name_result[i].text }}</a>
+            <span class="pub-date">{{ pub_date[i].text }}</span><br>
+            <a href="https://eparhia992.by/{{ name_result[i].get('href') }}" target="_blank">{{ name_result[i].text }}</a>
             <br><br>
         {% endfor %}
     </div>

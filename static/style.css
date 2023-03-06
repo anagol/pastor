@@ -252,3 +252,8 @@ iframe {
 .h-img {
     background-image: url("/static/img/header.jpg");
 }
+
+.news span{
+    color: #6c1111;
+    margin-left: -15px;
+}
