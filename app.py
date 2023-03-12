@@ -124,7 +124,7 @@ def about():
 # ------------------Страница со списком новостей-------------------
 @app.route('/news')
 def news():
-#     news_total = News.query.all()
+    # news_total = News.query.all()
     return render_template('news.html', title='Новости храма', names=Parser.names,
                            pub_date=Parser.pub_date, name_result=Parser.name_result, string_result=Parser.string_result)
 
