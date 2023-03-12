@@ -16,7 +16,7 @@ from bs4 import BeautifulSoup as bs
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'anatolihalasny1969'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:nataha@localhost:5432/pastor"
+app.config["SQLALCHEMY_DATABASE_URI"] = ""
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
