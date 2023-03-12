@@ -11,7 +11,7 @@ import locale
 import requests
 from bs4 import BeautifulSoup as bs
 
-locale.setlocale(locale.LC_ALL, 'ru_RU.UTF-8')
+# locale.setlocale(locale.LC_ALL, 'ru_RU.UTF-8')
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'anatolihalasny1969'
