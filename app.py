@@ -269,8 +269,8 @@ def priest():
 # -------------------Расписание богослужений----------------
 @app.route('/timetable')
 def timetable():
-    services_total = TimeTable.query.all()
-    return render_template('timetable.html', title='Расписание богослужений', services_total=services_total)
+    # services_total = TimeTable.query.all()
+    return render_template('timetable.html', title='Расписание богослужений')
 
 
 # -------------------Контакты----------------
