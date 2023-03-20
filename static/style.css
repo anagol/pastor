@@ -257,3 +257,16 @@ iframe {
     color: #6c1111;
     margin-left: -15px;
 }
+
+table{
+    font-size: 20px;
+    color: #991f1b;
+}
+
+table td {
+    padding: 10px;
+    font-weight: 500;
+}
+table, th, td {
+  border: 3px solid #6c1111;
+}
