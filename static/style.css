@@ -210,12 +210,17 @@ h4 {
 }
 
 footer {
-    margin-top: 50px;
+    margin-top: auto;
     width: 100%;
-    justify-content: center;
-    align-items: center;
-    position: relative;
     background-color: #693622;
+    /*padding-top: 120px;*/
+
+}
+
+.page{
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
 .index-content {
@@ -261,6 +266,14 @@ iframe {
 table{
     font-size: 20px;
     color: #991f1b;
+    margin-bottom: 30px;
+}
+@media screen{
+    table{
+        overflow-y: scroll;
+    }
+
+
 }
 
 table td {

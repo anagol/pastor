@@ -18,6 +18,7 @@
     {% endblock %}
 </head>
 <body>
+<div class="page">
 {% block header %}
     <img class="h-img" src="/static/img/header.jpg" alt="">
     <header>
@@ -66,15 +67,7 @@
 {% block footer %}
 
             <footer class="text-center text-white">
-                <div class="container p-4 pb-0">
-{#                    <section class="">#}
-{#                        <p class="d-flex justify-content-center align-items-center">#}
-{#                            <button type="button" class="btn btn-outline-light btn-rounded">#}
-{#                                <a href="{{ url_for('login') }}">Вход</a>#}
-{#                            </button>#}
-{#                        </p>#}
-{#                    </section>#}
-                </div>
+
 
                 <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
                     © 2023 Copyright: A.Halasny
@@ -82,6 +75,7 @@
             </footer>
 
 {% endblock %}
+</div>
 {% block scripts %}
     {{ bootstrap.load_js() }}
 {% endblock %}
